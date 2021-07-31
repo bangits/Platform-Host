@@ -1,22 +1,29 @@
 import { registerApplication, start } from 'single-spa';
-import { constructApplications, constructLayoutEngine, constructRoutes } from 'single-spa-layout';
-import microfrontendLayout from './microfrontend-layout.html';
+import { activeMfeFunctions } from './active-functions';
 
-// Construct microfrontend routes with single spa layout
-const routes = constructRoutes(microfrontendLayout);
+const microfrontends = Object.keys(activeMfeFunctions);
 
-// Importing application with System JS and construct app
-const applications = constructApplications({
-  routes,
-  loadApp({ name }) {
-    return System.import(name);
+microfrontends.forEach((name) => {
+  // Creating or getting the dom element for rendering application in it, which indicated in mfe
+
+  const domElementGetterId = `application:${name}`;
+
+  let elementForMfe = document.getElementById(domElementGetterId);
+
+  if (!elementForMfe) {
+    const microFrontendElement = document.createElement('div');
+    microFrontendElement.setAttribute('id', domElementGetterId);
+
+    elementForMfe = microFrontendElement;
+
+    document.body.appendChild(elementForMfe);
   }
+
+  registerApplication({
+    name,
+    app: () => System.import(name),
+    activeWhen: activeMfeFunctions[name]
+  });
 });
-
-// Registered applications and routes and start the application
-const layoutEngine = constructLayoutEngine({ routes, applications });
-
-applications.forEach((app) => registerApplication({ ...app, customProps: null }));
-layoutEngine.activate();
 
 start();
