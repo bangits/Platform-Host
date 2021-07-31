@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = 'platform';
@@ -27,6 +28,11 @@ module.exports = (webpackConfigEnv, argv) => {
         minify: {
           removeComments: !isLocal
         }
+      }),
+
+      // Copying runtime env variables file to dist
+      new CopyPlugin({
+        patterns: [{ from: './src/env.js', to: './env.js' }]
       })
     ],
 
