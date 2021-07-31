@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  platform-host:
+    stdin_open: true
+    tty: true
+    build: .
+    ports:
+      - '9000:9000'
+    volumes:
+      - ${PWD}/src:/app/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
