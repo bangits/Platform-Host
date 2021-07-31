@@ -15,8 +15,8 @@ This project was created with the [create-single-spa](https://single-spa.js.org/
 To run this project you need to follow commands below.
 
 ```sh
-git clone https://github.com/vahemur86/platform-host.git
-cd platform-host
-docker compose up
+git clone https://github.com/bangits/Platform-Host.git
+cd Platform-Host
+yarn start-app
 open http://localhost:9000
 ```
