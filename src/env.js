@@ -1,1 +1,3 @@
-window.env = Object.freeze({});
+window.env = Object.freeze({
+  envVariableForTest: 'envVariableForTest'
+});

@@ -26,4 +26,4 @@ microfrontends.forEach((name) => {
   });
 });
 
-start();
+System.import('@atom/design-system').then(() => start());

@@ -1,6 +1,7 @@
 version: '3.9'
 services:
   platform-host:
+    container_name: Platform-Host
     stdin_open: true
     tty: true
     build: .
