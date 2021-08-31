@@ -17,6 +17,6 @@ To run this project you need to follow commands below.
 ```sh
 git clone https://github.com/bangits/Platform-Host.git
 cd Platform-Host
-docker compose up
+yarn start-app
 open http://localhost:9000
 ```

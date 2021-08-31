@@ -1,0 +1,15 @@
+{
+  "extends": ["important-stuff", "eslint:recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prefer-const": "error"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
