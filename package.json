@@ -2,6 +2,7 @@
   "name": "@platform/root-config",
   "scripts": {
     "start": "webpack serve --port 9000 --env isLocal",
+    "serve": "webpack serve --port 9000",
     "lint": "eslint src --ext js",
     "format": "yarn pretty-quick",
     "check-format": "prettier --check .",

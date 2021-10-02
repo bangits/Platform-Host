@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 9000
 
 # Start application
-CMD ["yarn", "start"]
+CMD ["yarn", "serve"]
